@@ -13,7 +13,6 @@ CREATE TABLE student (
   PRIMARY KEY(student_id)
 );
 
-
 -- Show the table
 DESCRIBE srudent;
 SELECT * FROM student;
@@ -71,3 +70,41 @@ WHERE student_id = 5;
 -- <    : less than
 -- >=   : greater than or equal
 -- <=   : less than or equal
+
+-- QUERIES
+SELECT name, major
+FROM student;
+
+-- specifies from which table
+SELECT student.name, student.major
+FROM student
+ORDER by name;
+
+-- ORDER by name DESC; (descending)
+-- ORDER by student.id DESC; (not displaying, order by student.id)
+-- ORDER by student.id ASC; (ascending)
+-- ORDER by major, student.id; (order by major, if repeated, order by student.id)
+
+-- only displays 2 rows
+SELECT student.name, student.major
+FROM student
+LIMIT 2;
+
+SELECT * FROM srudent
+WHERE major = 'Biology';
+
+-- WHERE major = 'Biology' OR major = 'Chemistry';
+-- WHERE major <> 'Chemistry';
+-- WHERE student.id < 3;
+-- WHERE name IN ('Kate', 'Nik');
+-- WHERE major IN ('Biology' AND studemt.id > 2;
+
+-- NESTED QUERIES - multiple selecte statament IN / =
+SELECT employee.first_name
+FROM employee
+WHERE employee.emp.ID IN (
+  SELECT works_with.emp_id
+  FROM works_with
+  WHERE works_with.total_sales > 30000
+  LIMIT 1
+  );
