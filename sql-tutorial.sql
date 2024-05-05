@@ -14,7 +14,7 @@ CREATE TABLE student (
 );
 
 -- Show the table
-DESCRIBE srudent;
+DESCRIBE student;
 SELECT * FROM student;
 
 -- Execute current statement
@@ -99,6 +99,13 @@ WHERE major = 'Biology';
 -- WHERE name IN ('Kate', 'Nik');
 -- WHERE major IN ('Biology' AND studemt.id > 2;
 
+SELECT first name AS forename, last_name AS surname
+FROM employee;
+
+--find out all the different gender
+SELECT DISTINCT sex
+FROM employee;
+
 -- NESTED QUERIES - multiple selecte statament IN / =
 SELECT employee.first_name
 FROM employee
@@ -108,3 +115,59 @@ WHERE employee.emp.ID IN (
   WHERE works_with.total_sales > 30000
   LIMIT 1
   );
+
+-- ON DELETE
+CREATE TABLE branch (
+  branch_id INT PRIMARY KEY,
+  branch_name VARCHAR(40),
+  mgr_id INT,
+  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id)
+  ON DELETE SET NULL
+  );
+
+-- return to table employee, enter foreign key
+
+ALTER TABLE employee
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL
+
+CREATE TABLE works_with (
+  emp_id INT,
+  client_id INT,
+  total_sales INT,
+  PRIMARY KEY(emp_id, client_id),
+  FOREIGN KEY(emp_id) REFERENCES employee(emp_id)
+  ON DELETE SET CASCADE,
+  FOREIGN KEY(client_id) REFERENCES client(client_id)
+  ON DELETE SET CASCADE
+  );
+
+-- ON DELETE SET NULL - delete emp_id = 102 and replace with NULL
+DELETE FROM employee
+WHERE emp_id = 102;
+
+-- ON DELETE SET CASCADE
+CREATE TABLE branch (
+  branch_id INT PRIMARY KEY,
+  branch_name VARCHAR(40),
+  mgr_id INT,
+  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id)
+  ON DELETE SET CASCADE
+  );
+
+DELETE FROM branch
+WHERE branch_id = 2;
+
+-- PRIMARY KEY can't be set to NULL, it should have value
+-- only foreigh key can be set to NULL
+-- if primary key deleted, that deletes the entire table
+
+-- FUNCTIONS - block of code tha we can call, which will do something for us
+SELECT COUNT(emp_id)
+FROM employee
+-- count how many employess
+
+SELECT COUNT(DISTINCT super_id)
+FROM employee;
+-- count unique super_id
