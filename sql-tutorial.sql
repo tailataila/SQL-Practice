@@ -166,8 +166,60 @@ WHERE branch_id = 2;
 -- FUNCTIONS - block of code tha we can call, which will do something for us
 SELECT COUNT(emp_id)
 FROM employee
--- count how many employess
+-- count how many employees
 
 SELECT COUNT(DISTINCT super_id)
 FROM employee;
 -- count unique super_id
+
+SELECT AVG(salary)
+FROM employee;
+-- average
+
+SELECT SUM(salary)
+FROM employee;
+- sum
+
+-- AGGRIGATION
+SELECT COUNT(sex), sex
+FROM employee
+GROUP BY sex;
+-- sex in the first row - show the column, will show how many M and F
+
+SELECT SUM(total_sales), emp_id
+  FROM works_with
+  GROUP BY emp_id;
+-- shows how much each employee sold
+
+-- TRIGGERS
+-- block of SQL code which defines a certain action that should happen when a certain operation gets performed
+-- delimeter in Mysql is ";", so the code stops executing after that and we need ti change delimeter to "S" and at the end of trigger change the delimeter back
+
+DELIMETER $$
+CREATE
+   TRIGGER my_trigger BEFORE INSERT
+   ON employee
+   FOR EACH ROW BEGIN
+   INSERT INTO trigger_test VALUES('added new employee');
+END $$
+DELIMETER ;
+
+-- INSERT INTO trigger_test VALUES(NEW.first_name);
+-- BEFORE -> AFTER
+-- INSERT -> DELETE
+
+DELIMETER $$
+CREATE
+   TRIGGER my_trigger1 BEFORE INSERT
+   ON employee
+    IF NEW.sex = 'M' THEN
+     INSERT INTO trigger_test VALUES('added male');
+    ELSE IF NEW.sex = 'F' THEN
+     INSERT INTO trigger_test VALUES('added female');
+    ELSE
+     INSERT INTO trigger_test VALUES('added other');
+    END IF;
+END $$
+DELIMETER ;
+
+
