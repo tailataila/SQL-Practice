@@ -27,7 +27,7 @@
 
 ### Index
 
-**Indexes** rae used by queries to find data from table quickly. Similar to an index in a book.
+**Indexes** are used by queries to find data from a table quickly. Similar to an index in a book.
 Data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space.
 
 ```sql
