@@ -22,6 +22,23 @@
 
 **Query** - a request for a particular peice of information.
 
+**Function** - a block of code that we can call, which will do something for us.
+
+**Wildcards** - way to define different patterns that we want to match the data to = grab data that matches specific pattern.
+
+**Union** - SQL operator to combine multiple select statements into one.
+- Rule 1 - the same number of columns
+- Rule 2 - types of data should be similar
+
+**Join** - combines rows from two or more tables based on a related column between them.
+- General JOIN = Inner JOIN = combines two tables only where we have ON values in the columns.
+- Left JOIN = we include all of the rows from left table.
+- Right JOIN - we include all rows from right table.
+- FULL OUTTER JOIN - lest and right combined (not used in mySQL).
+
+*Union* - joins vertically
+*Join* - joins horizontally
+
 
 ### Normalization
 
