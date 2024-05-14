@@ -6,9 +6,21 @@
 
 **DBMS** - database management system.
 
-**Primary key** - unique identifier for each record/row in a table. Must contain unique valies. Can't contain NULL values.
+**Primary key** - unique identifier for each row in a table. Must contain unique valies. Can't contain NULL values.
 
 **Foreign key** - link data in the table to the data in another table = a field in one table that refers to the primary key in another table.
+
+**Surrogate key** = type of primary key = doesn't have mapping in  real world.
+
+**Natural key** = has mapping in a real world.
+
+**Composite key** - consists of more than one attributes / columns.
+
+**Entity** - an object we want to model and stoe information about.
+
+**Attrubute** - specific peice of information about an entity.
+
+**Query** - a request for a particular peice of information.
 
 
 ### Normalization
