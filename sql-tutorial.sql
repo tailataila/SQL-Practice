@@ -259,9 +259,7 @@ SELECT employee.emp_id, employee.first_name, branch.branch_id
 -- General JOIN = Inner JOIN = combines two tables only where we have ON values in the columns.
 -- Left JOIN = we include all of the rows from left table.
 -- Right JOIN - we include all rows from right table.
--- FULL OUTTER JOIN - lest and right combined (not used in mySQL).
-
-
+-- FULL OUTER JOIN - lest and right combined (not used in mySQL).
 
 -- TRIGGERS
 -- block of SQL code which defines a certain action that should happen when a certain operation gets performed
