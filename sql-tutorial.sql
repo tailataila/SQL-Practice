@@ -163,7 +163,7 @@ WHERE branch_id = 2;
 -- only foreigh key can be set to NULL
 -- if primary key deleted, that deletes the entire table
 
--- FUNCTIONS - block of code tha we can call, which will do something for us
+-- FUNCTIONS - block of code that we can call, which will do something for us
 SELECT COUNT(emp_id)
 FROM employee
 -- count how many employees
@@ -190,6 +190,78 @@ SELECT SUM(total_sales), emp_id
   FROM works_with
   GROUP BY emp_id;
 -- shows how much each employee sold
+
+-- WILDCARDS - way to define different patterns that we want to match the data to.
+SELECT * FROM Client
+WHERE client_name LIKE '%LLC';
+
+-- AS - replace name of the column
+SELECT first_name AS company;
+SELECT CONCAT(CONCAT(client, '_'), id) AS ids, status;
+
+-- %   : any number of characters
+-- _   : one character
+
+-- UNION - SQL operator to combine multiple select statements into one
+-- Rule 1 - the same number of columns
+-- Rule 2 - types of data should be similar
+SELECT first_name
+  FROM employee
+  UNION
+  SELECT branch_name
+  FROM branch
+  UNION
+  SELECT client_name
+  FROM client;
+
+SELECT SUM(total_sales)
+  FROM works_with
+  UNION SELECT SUM(salary)
+  FROM employee;
+-- result
+-- sum of total_sales
+-- sum of salaries
+
+SELECT SUM(total_sales) AS total
+  FROM (
+     SELECT SUM(total_sum) AS total_sum FROM works_with
+     UNION
+     SELECT SUM(salary) AS total_sum FROM employee
+  ) AS combined_totals;
+-- combined_totals - alies = not displayed
+-- result
+-- total_sum
+-- sum of total_sales + sum of salaries
+
+SELECT total, total 2
+  FROM
+     (SELECT SUM(total_sales) AS total 1 FRO< works_with) A
+     JOIN
+     (SELECT SUM(salary) AS total2 FROM employee) B;
+-- A, B - alies
+-- result
+-- total 1              total 2
+-- sum of total_sales   sum of salaries
+
+-- Stating the table not necessary, but more readable
+SELECT client_name, client.branch.id
+  FROM client
+  UNION
+  SELECT supplier_name, branch_supplier.branch_id
+  FROM brancj_supplier;
+
+-- JOINS = combine rows from two or more tables based on a related column between them
+SELECT employee.emp_id, employee.first_name, branch.branch_id
+  FROM employee
+  JOIN branch
+  ON employee.emp_id = branch.mgr_id;
+
+-- General JOIN = Inner JOIN = combines two tables only where we have ON values in the columns.
+-- Left JOIN = we include all of the rows from left table.
+-- Right JOIN - we include all rows from right table.
+-- FULL OUTTER JOIN - lest and right combined (not used in mySQL).
+
+
 
 -- TRIGGERS
 -- block of SQL code which defines a certain action that should happen when a certain operation gets performed
@@ -221,5 +293,3 @@ CREATE
     END IF;
 END $$
 DELIMETER ;
-
-
