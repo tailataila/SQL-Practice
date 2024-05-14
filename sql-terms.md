@@ -1,26 +1,26 @@
 ### SQL Basics
 
-**SQL** - structured query language = standartized language for interacting with RDBMS.
+**SQL** - structured query language = standardized language for interacting with RDBMS.
 
 **DB** - collection of related information.
 
 **DBMS** - database management system.
 
-**Primary key** - unique identifier for each row in a table. Must contain unique valies. Can't contain NULL values.
+**Primary key** - unique identifier for each row in a table. Must contain unique values. Can't contain NULL values.
 
 **Foreign key** - link data in the table to the data in another table = a field in one table that refers to the primary key in another table.
 
-**Surrogate key** = type of primary key = doesn't have mapping in  real world.
+**Surrogate key** = type of primary key = doesn't have mapping in a real world.
 
 **Natural key** = has mapping in a real world.
 
 **Composite key** - consists of more than one attributes / columns.
 
-**Entity** - an object we want to model and stoe information about.
+**Entity** - an object we want to model and store information about.
 
-**Attrubute** - specific peice of information about an entity.
+**Attribute** - specific piece of information about an entity.
 
-**Query** - a request for a particular peice of information.
+**Query** - a request for a particular piece of information.
 
 **Function** - a block of code that we can call, which will do something for us.
 
@@ -34,7 +34,7 @@
 - General JOIN = Inner JOIN = combines two tables only where we have ON values in the columns.
 - Left JOIN = we include all of the rows from left table.
 - Right JOIN - we include all rows from right table.
-- FULL OUTTER JOIN - lest and right combined (not used in mySQL).
+- FULL OUTER JOIN - lest and right combined (not used in mySQL).
 
 *Union* - joins vertically
 *Join* - joins horizontally
@@ -51,7 +51,7 @@
 
 **_Second normal form:_** any column that is not the primary key needs to depend on the primary key.
 
-**_Third normal form:_** avoid transitive dependancies - any column that is not the primary key is only dependent on the primary key.
+**_Third normal form:_** avoid transitive dependencies - any column that is not the primary key is only dependent on the primary key.
 
 
 ### Index
